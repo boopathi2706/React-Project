@@ -1,6 +1,14 @@
-const Demo=()=>{
+
+import logo from '../assets/logo.jpeg';
+
+const Demo = (props) => {
     return (
-        <p>hi i am boopathi</p>
-    )
+        <div>
+            <h1>{props.page}</h1>
+            <img src={logo} alt="sece logo" />
+            <h1>{props.image}</h1>
+        </div>
+    );
 }
+
 export default Demo;
