@@ -10,3 +10,12 @@ ol{
     font-size: 25px;
     cursor: pointer;
 }
+.link{
+    text-decoration: none;
+    padding: 7px;
+}
+.link:hover{
+    color: rgb(5, 159, 255);
+    background-color: white;
+    border-radius: 20px;
+}
