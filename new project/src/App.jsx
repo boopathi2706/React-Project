@@ -4,23 +4,26 @@ import ClassComponents from "./Components/ClassComponents";
 import Demo from "./Components/Demo";
 import Gallery from "./Components/Gallery";
 import PropsCode from "./Components/PropsCode";
-import UseState from "./Components/UseState";
+import UseState from "./Components/Hooks/UseState";
 import EventHandling from "./Components/Event_handling_day8";
 import Navbar_day8 from "./Components/Navbar_day8";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Login from './Components/Login_day8';
+import UseEffect from "./Components/Hooks/UseEffect";
 function App() {
   return (
     <BrowserRouter>
-     {/* <Navbar_day8 /> */}
+     <Navbar_day8 />
      
       <Routes>
-         <Route path='/' element={<Login />}></Route>
-         <Route path='/navbar' element={<Navbar_day8 />}></Route>
+         {/* <Route path='/' element={<Navbar_day8 />}></Route> */}
+         <Route path='/login' element={<Login />}></Route>
          <Route path='/about' element={<About />}></Route>
-         <Route path='/usestate' element={<UseState />}></Route>
+         <Route path='/gallery' element={<Gallery />}></Route>
+         <Route path='/use- bstate' element={<UseState />}></Route>
          <Route path='/classComponents' element={<ClassComponents />}></Route>
          <Route path='/demo' element={<Demo />}></Route>
+         <Route path='/use-effect' element={<UseEffect />}></Route>
          <Route path='/login' element={<Login />}></Route>
 
       </Routes>
