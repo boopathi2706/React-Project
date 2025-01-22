@@ -22,7 +22,7 @@ const Navbar_day8=()=>{
                     <span onMouseEnter={()=>{ShowDropdown(true)}} >HOOKS</span> 
                     {dropdown && <ul onMouseLeave={()=>{ShowDropdown(false)}}>
                         <li><Link to={'/usestate'} target='_blank'>UseState</Link></li>
-                        <li><Link>UseEffect</Link></li>
+                        <li><Link to={'/use-effect-api'}>UseEffectAPI</Link></li>
                     </ul>}
                     
                 </div>

@@ -10,6 +10,7 @@ import Navbar_day8 from "./Components/Navbar_day8";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Login from './Components/Login_day8';
 import UseEffect from "./Components/Hooks/UseEffect";
+import UseEffectAPI from "./Components/Hooks/UseEffectAPI";
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
          <Route path='/classComponents' element={<ClassComponents />}></Route>
          <Route path='/demo' element={<Demo />}></Route>
          <Route path='/use-effect' element={<UseEffect />}></Route>
+         <Route path='/use-effect-api' element={<UseEffectAPI />}></Route>
          <Route path='/login' element={<Login />}></Route>
 
       </Routes>
