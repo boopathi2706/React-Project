@@ -11,6 +11,7 @@ import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Login from './Components/Login_day8';
 import UseEffect from "./Components/Hooks/UseEffect";
 import UseEffectAPI from "./Components/Hooks/UseEffectAPI";
+import UseReducer from "./Components/Hooks/UseReduce";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
          <Route path='/demo' element={<Demo />}></Route>
          <Route path='/use-effect' element={<UseEffect />}></Route>
          <Route path='/use-effect-api' element={<UseEffectAPI />}></Route>
+         <Route path='/use-reducer' element={<UseReducer />}></Route>
          <Route path='/login' element={<Login />}></Route>
 
       </Routes>

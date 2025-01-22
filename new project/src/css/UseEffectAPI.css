@@ -1,0 +1,21 @@
+.container{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    
+}
+.item{
+    width: 220px;
+    height: 250px;
+    padding: 10px;
+    border: 3px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    list-style-type: none;
+}
+.image{
+    width: 200px;
+    height: 200px;
+}
