@@ -12,8 +12,10 @@ import Login from './Components/Login_day8';
 function App() {
   return (
     <BrowserRouter>
-     <Navbar_day8 />
+     {/* <Navbar_day8 /> */}
+     
       <Routes>
+         <Route path='/' element={<Login />}></Route>
          <Route path='/navbar' element={<Navbar_day8 />}></Route>
          <Route path='/about' element={<About />}></Route>
          <Route path='/usestate' element={<UseState />}></Route>
