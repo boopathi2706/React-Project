@@ -24,6 +24,9 @@ const Navbar_day8=()=>{
                         <li><Link className='link1' to={'/usestate'}>UseState</Link></li>
                         <li><Link className='link1' to={'/use-effect-api'}>UseEffectAPI</Link></li>
                         <li><Link className='link1' to={'/use-reducer'}>UseReducer</Link></li>
+                        <li><Link className='link1' to={'/use-ref'}>UseRef</Link></li>
+                        <li><Link className='link1' to={'/use-memo'}>UseMemo</Link></li>
+                        <li><Link className='link1' to={'/use-callback'}>UseCallBack</Link></li>
                     </ul>}
                     
                 </div>

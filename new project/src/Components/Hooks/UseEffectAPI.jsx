@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import '../../css/UseEffectAPI.css'
+import "../../css/UseEffectAPI.css";
 
 const UseEffectAPI = () => {
   var [posts, setPost] = useState([]);
   useEffect(() => {
-       axios
+    axios
       // .get("https://jsonplaceholder.typicode.com/posts/")
       .get("https://fakestoreapi.com/products/")
       .then((res) => {
@@ -26,10 +26,13 @@ const UseEffectAPI = () => {
       </ul> */}
 
       <div className="container">
-        {posts.map((post)=>(
-          <div className="item"><li key={post.id}><img className="image" src={post.image} alt="" /></li></div>
+        {posts.map((post) => (
+          <div className="item">
+            <li key={post.id}>
+              <img className="image" src={post.image} alt="" />
+            </li>
+          </div>
         ))}
-        
       </div>
     </>
   );

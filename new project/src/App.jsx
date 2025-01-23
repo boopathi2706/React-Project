@@ -12,6 +12,9 @@ import Login from './Components/Login_day8';
 import UseEffect from "./Components/Hooks/UseEffect";
 import UseEffectAPI from "./Components/Hooks/UseEffectAPI";
 import UseReducer from "./Components/Hooks/UseReduce";
+import UseRef from "./Components/Hooks/UseRef";
+import UseMemo from "./Components/Hooks/UseMemo";
+import UseCallBack from "./Components/Hooks/UseCallBack";
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +31,9 @@ function App() {
          <Route path='/use-effect' element={<UseEffect />}></Route>
          <Route path='/use-effect-api' element={<UseEffectAPI />}></Route>
          <Route path='/use-reducer' element={<UseReducer />}></Route>
+         <Route path='/use-ref' element={<UseRef />}></Route>
+         <Route path='/use-memo' element={<UseMemo />}></Route>
+         <Route path='/use-callback' element={<UseCallBack />}></Route>
          <Route path='/login' element={<Login />}></Route>
 
       </Routes>
