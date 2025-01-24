@@ -4,9 +4,7 @@ import ClassComponents from "./Components/ClassComponents";
 import Demo from "./Components/Demo";
 import Home from './Components/Home';
 import Gallery from "./Components/Gallery";
-import PropsCode from "./Components/PropsCode";
 import UseState from "./Components/Hooks/UseState";
-import EventHandling from "./Components/Event_handling_day8";
 import Navbar_day8 from "./Components/Navbar_day8";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Login from './Components/Login_day8';
@@ -36,7 +34,6 @@ function App() {
          <Route path='/use-ref' element={<UseRef />}></Route>
          <Route path='/use-memo' element={<UseMemo />}></Route>
          <Route path='/use-callback' element={<UseCallBack />}></Route>
-         <Route path='/login' element={<Login />}></Route>
 
       </Routes>
       
