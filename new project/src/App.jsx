@@ -14,6 +14,7 @@ import UseReducer from "./Components/Hooks/UseReduce";
 import UseRef from "./Components/Hooks/UseRef";
 import UseMemo from "./Components/Hooks/UseMemo";
 import UseCallBack from "./Components/Hooks/UseCallBack";
+import Usecontext from "./Components/Hooks/UseContext";
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +35,7 @@ function App() {
          <Route path='/use-ref' element={<UseRef />}></Route>
          <Route path='/use-memo' element={<UseMemo />}></Route>
          <Route path='/use-callback' element={<UseCallBack />}></Route>
+         <Route path='/use-context' element={<Usecontext />}></Route>
 
       </Routes>
       
