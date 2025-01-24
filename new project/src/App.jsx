@@ -22,6 +22,7 @@ function App() {
      
       <Routes>
          {/* <Route path='/' element={<Navbar_day8 />}></Route> */}
+         <Route path="/" ></Route>
          <Route path='/login' element={<Login />}></Route>
          <Route path='/about' element={<About />}></Route>
          <Route path='/gallery' element={<Gallery />}></Route>
