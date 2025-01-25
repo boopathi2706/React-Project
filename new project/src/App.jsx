@@ -15,6 +15,9 @@ import UseRef from "./Components/Hooks/UseRef";
 import UseMemo from "./Components/Hooks/UseMemo";
 import UseCallBack from "./Components/Hooks/UseCallBack";
 import Usecontext from "./Components/Hooks/UseContext";
+import LazyLoadingWithSuspence from "./Components/Memoization/LazyLoadingWithSuspence";
+import UseLocalStorage from "./Components/Hooks/CustomHooks/UseLocalStorage";
+import HoC from "./Components/HoC/HoC";
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +39,10 @@ function App() {
          <Route path='/use-memo' element={<UseMemo />}></Route>
          <Route path='/use-callback' element={<UseCallBack />}></Route>
          <Route path='/use-context' element={<Usecontext />}></Route>
+         <Route path='/use-storage' element={<UseLocalStorage />}></Route>
+         <Route path='/hoc' element={<HoC />}></Route>
+         <Route path='/lazy' element={<LazyLoadingWithSuspence />}></Route>
+
 
       </Routes>
       
