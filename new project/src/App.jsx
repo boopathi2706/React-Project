@@ -18,6 +18,8 @@ import Usecontext from "./Components/Hooks/UseContext";
 import LazyLoadingWithSuspence from "./Components/Memoization/LazyLoadingWithSuspence";
 import UseLocalStorage from "./Components/Hooks/CustomHooks/UseLocalStorage";
 import HoC from "./Components/HoC/HoC";
+import Signup from "./Components/Signup";
+import Login from "./Components/Login";
 function App() {
   return (
     <BrowserRouter>
@@ -41,6 +43,8 @@ function App() {
          <Route path='/use-context' element={<Usecontext />}></Route>
          <Route path='/use-storage' element={<UseLocalStorage />}></Route>
          <Route path='/hoc' element={<HoC />}></Route>
+         <Route path='/signup' element={<Signup />}></Route>
+         <Route path="/login_new" element={<Login />}></Route>
          <Route path='/lazy' element={<LazyLoadingWithSuspence />}></Route>
 
 
