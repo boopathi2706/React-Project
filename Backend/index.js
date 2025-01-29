@@ -1,119 +1,110 @@
-const express = require("express");
-const path = require("path");
-const mdb = require("mongoose");
-const dotenv = require("dotenv");
-const Signup = require("./models/signupSchema");
-const app = express();
+const express=require("express");
+const path=require("path");
+const mdb=require('mongoose');
+const dotenv=require("dotenv");
+const  Signup = require('./models/signupSchema');
+const bcrypt=require('bcrypt');
+const cors=require('cors');
+const jwt=require('jsonwebtoken');
+const app=express();
 dotenv.config();
-app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.json())
+app.use(cors());
+mdb.connect(process.env.MONGODB_URL).then(()=>{
+    console.log("MongoDB Connection Sucessful")
+}).catch((e)=>{
+    console.log("MongoDB Connection Not Sucessful",e);
+})
+const verifyToken = (req,res,next)=>{
+  console.log("middleware triggered");
+  var token=req.headers.authorization;
+  if(!token){
+    res.send("requested delivered");
+  }
+  try{
+    const user=jwt.verify(token.process.env.SECRET_KEY);
+    req.user=user;
+  }
+  catch(err){
+         res.status(200).send("error token");
+  }
+  next();
+}
 
-mdb
-  .connect(process.env.MONGODB_URL)
-  .then(() => {
-    console.log("conntected");
-  })
-  .catch((e) => {
-    console.log("not conntected");
-  });
-app.get("/static", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+app.get('/',(req,res)=>{
+    res.send("Hello Everyone !! \n I am Geethapriyan S");
 });
-app.get("/", (req, res) => {
-  res.send("Welcome to backend my friend...\n this is backend process area");
+app.get('/static',(req,res)=>{
+    res.sendFile(path.join(__dirname,"index.html"));
 });
-app.post("/signup", (req, res) => {
-  var { firstname, lastname, email, password } = req.body;
-  console.log(req.body);
-  try {
-    const newCustomer = new Signup({
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      password: password,
+app.get('/json',verifyToken,(req,res)=>{
+  res.json({"message":"this is middle ware check",user:req.data.user,firstname});
+});
+
+
+app.post('/signup',async (req,res)=>{
+    var {firstname,lastname,email,password}=req.body;
+    console.log(req.body);
+    var hashedPassword=await bcrypt.hash(password,10);
+    console.log(hashedPassword);
+    try{ 
+    var newCustomer = new Signup({
+        firstname:firstname,
+        lastname:lastname,
+        email:email,
+        password:hashedPassword,
     });
     newCustomer.save();
-    console.log(newCustomer);
-    res.status(201).send("signup is successfull");
-  } catch (error) {
-    res.status(401).send("signup unsuccessful", error);
-  }
+    res.status(201).json({response:"Signup Successful",signupStatus:true});
+    console.log("value recived")
+ }catch(err){
+    res.status(401).send("yooo!")
+    console.log("unSuccessful")
+ }
 });
-
-app.get("/getssignupdet", async (req, res) => {
-  var signUpdet = await Signup.find();
-  res.status(200).json(signUpdet);
-});
-// app.post("/login", async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await Signup.findOne({ email });
-//     if (!user) {
-//       return res.status(404).send("User not found!");
-//     }
-
-//     if (user.password !== password) {
-//       return res.status(401).send("Invalid credentials!");
-//     }
-//     res.status(200).send("Login successful!");
-//   } catch (error) {
-//     console.error("Login error:", error);
-//     res.status(500).send("Error during login");
-//   }
-// });
 
 app.post('/login',async (req,res)=>{
-  var {email,password}= req.body;
-  console.log(req.body);
-  try{ 
+    var {email,password}= req.body;
+    console.log(req.body);
+    try{ 
     var user=await Signup.findOne({email});
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
-}
-const isMatch = await bcrypt.compare(password, user.password);
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+    const payload={
+        email:user.email,
+        firstname:user.firstname
+    }
+    const token=jwt.sign(payload,process.env.SECRET_KEY,{expiresIn:"1hr"});
+    console.log(token);
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
         return res.status(401).json({ message: "Invalid password" });
     }
-    console.log("insiide try");
-    res.status(201).json({ message: "Login successful", user });
+    console.log("inside try");
+    res.status(201).json({ message: "Login successful", Loginstatus:true ,token:token});
     } catch (error) {
     console.error(error);
-    console.log("insiide catch");
+    console.log("inside catch");
     res.status(500).json({ message: "Internal server error" });
 }});
 
-
-app.post("/update", async (req, res) => {
-  const update = await Signup.findOneAndUpdate(
-    { firstname: "boopathi" },
-    { $set: { firstname: "boopathi_27" } }
-  );
-  res.json("record updated");
-  update.save();
+app.get("/getsignupdet", async (req, res) => {
+    var signUpdet = await Signup.find();
+    res.status(200).json(signUpdet);
 });
 
-app.post("/delete", async (req, res) => {
-  try {
-    const { firstname } = req.body;
-    if (!firstname) {
-      return res.status(400).json({ message: "Firstname is required" });
-    }
-
-    const del = await Signup.deleteOne({ firstname });
-
-    if (del.deletedCount > 0) {
-      res.status(200).json({ message: "Record deleted successfully" });
-    } else {
-      res.status(404).json({ message: "No record found with the given firstname" });
-    }
-  } catch (error) {
-    console.error("Error deleting record:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
+app.post("/updatedet", async(req, res) => {
+    var updateRec = await Signup.findOneAndUpdate(
+      { firstname: "boopathi" },
+      { $set: { firstname: "boopathi_27" } }
+    );
+    console.log(updateRec);
+    updateRec.save()
+    res.json("Record Updated")
 });
 
-
-app.listen(3001, () => {
-  console.log("My Server Started");
+app.listen(1001,()=>{
+    console.log("Server Started");
 });

@@ -7,7 +7,7 @@ import Gallery from "./Components/Gallery";
 import UseState from "./Components/Hooks/UseState";
 import Navbar_day8 from "./Components/Navbar_day8";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
-import Login from './Components/Login_day8';
+// import Login from './Components/Login_day8';
 import UseEffect from "./Components/Hooks/UseEffect";
 import UseEffectAPI from "./Components/Hooks/UseEffectAPI";
 import UseReducer from "./Components/Hooks/UseReduce";
@@ -28,7 +28,7 @@ function App() {
       <Routes>
          {/* <Route path='/' element={<Navbar_day8 />}></Route> */}
          <Route path="/" element={<Home />}></Route>
-         <Route path='/login' element={<Login />}></Route>
+         {/* <Route path='/login' element={<Login />}></Route> */}
          <Route path='/about' element={<About />}></Route>
          <Route path='/gallery' element={<Gallery />}></Route>
          <Route path='/use- bstate' element={<UseState />}></Route>

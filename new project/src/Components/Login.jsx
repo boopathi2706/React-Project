@@ -1,7 +1,6 @@
 import React from 'react'
-import "../../css/SignUp.css"
+import "../css/Login.css"
 import { useState } from 'react';
-import "../../css/SignUp.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -35,16 +34,13 @@ const Login = ()=>{
             <form onSubmit={handleLogin}>
                 <div className="data">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" placeholder="enter your email" required/>
                     <input type="email" name="email" placeholder="enter your email" onChange={(e) => setEmail(e.target.value)} required/>
                 </div>
                 <div className="data">
                     <label htmlFor="password">Password</label>
-                    <input type="text" name="password" placeholder="enter your password" required/>
                     <input type="text" name="password" placeholder="enter your password"  onChange={(e) => setPassword(e.target.value)} required/>
                 </div>
-                <button>sumbit</button>
-                <button type='submit'>sumbit</button>
+                     <button type='submit'>sumbit</button>
             </form>
         </div>
     </div>
